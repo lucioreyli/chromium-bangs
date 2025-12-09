@@ -28,10 +28,18 @@ const styles = stylex.create({
 	},
 });
 
+const url = new URL("https://genius.com/search?q={{{s}}}");
+console.log(url);
+
 export function App() {
 	const str = "Chromium (search)Bangs";
 	return (
 		<main>
+			<img
+				width={64}
+				alt="icon"
+				src={`https://www.google.com/s2/favicons?domain=disc.eu&sz=64`}
+			/>
 			<nav>
 				<Button size="sm">
 					<GitHubIcon width="1.5rem" height="1rem" />
@@ -50,12 +58,6 @@ export function App() {
 			<h1>{str}</h1>
 			<Button onClick={() => console.log("enabled")} size="sm">
 				hello world
-			</Button>
-			<Button onClick={() => console.log("enabled")}>
-				I Can't Feel My Legs
-			</Button>
-			<Button disabled onClick={() => console.log("disabled")}>
-				I Can't Feel My Legs
 			</Button>
 		</main>
 	);

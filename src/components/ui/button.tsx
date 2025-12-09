@@ -10,15 +10,8 @@ const styles = stylex.create({
 		justifyContent: "center",
 		textAlign: "center",
 
-		color: `oklch(${tokens.fg})`,
 		fontWeight: 500,
-		backgroundColor: {
-			default: `oklch(${tokens.primary})`,
-			":hover": `oklch(${tokens.primary} / 0.9)`,
-		},
-		borderWidth: "0.5px",
-		borderStyle: "solid",
-		borderColor: `oklch(${tokens.fg} / 0.175)`,
+		color: `oklch(${tokens.fg})`,
 		borderRadius: "0.35rem",
 		transitionProperty: "all",
 		transition: "outline 150ms ease-in-out",
@@ -27,6 +20,15 @@ const styles = stylex.create({
 			":focus-visible": "3px solid",
 		},
 		fontSize: "0.875rem",
+	},
+	default: {
+		backgroundColor: {
+			default: `oklch(${tokens.primary})`,
+			":hover": `oklch(${tokens.primary} / 0.9)`,
+		},
+		borderWidth: "0.5px",
+		borderStyle: "solid",
+		borderColor: `oklch(${tokens.fg} / 0.175)`,
 	},
 	disabled: {
 		pointerEvents: "none",
@@ -38,13 +40,11 @@ const sizes = stylex.create({
 	default: {
 		padding: "0.5rem 0.75rem",
 	},
-	sm: {
-		padding: "0.5rem",
-	},
+	sm: { padding: "0.5rem" },
 });
 
 type Variants = {
-	variant?: Omit<keyof typeof styles, "base" | "disabled">;
+	variant?: Exclude<keyof typeof styles, "base" | "disabled">;
 	size?: keyof typeof sizes;
 };
 
@@ -59,6 +59,7 @@ export const Button = ({
 			{...props}
 			{...stylex.props(
 				styles.base,
+				styles[variant],
 				sizes[size],
 				(props.disabled || props["aria-disabled"]) && styles.disabled,
 			)}
