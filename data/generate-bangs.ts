@@ -47,15 +47,12 @@ const bangSchema = z.array(
 const src = `https://github.com/kagisearch/bangs/raw/refs/tags/${VERSION}/data/bangs.json`;
 
 const main = async () => {
-	const res = (await fetch(src).then((res) => res.json())) as z.infer<
-		typeof bangSchema
-	>;
+	const res = await fetch(src).then((res) => res.json());
 	const { error, data, success } = z.safeParse(bangSchema, res);
 	if (!success) {
 		return console.error(error);
 	}
-	const file = Bun.file("./b.json");
-	await file.write(JSON.stringify(data, null, 0));
+	await Bun.file("./bangs.json").write(JSON.stringify(data, null, 0));
 };
 
 main();
