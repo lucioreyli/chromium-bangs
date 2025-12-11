@@ -1,5 +1,5 @@
-import { z } from "zod";
 import Bun from "bun";
+import { z } from "zod";
 
 const VERSION = "202512091948";
 

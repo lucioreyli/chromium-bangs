@@ -2,11 +2,10 @@ import * as stylex from "@stylexjs/stylex";
 import { Button } from "./components/ui/button.tsx";
 import { GitHubIcon } from "./assets/icons/github-icon.tsx";
 import { SearchBangs } from "./components/search-bangs.tsx";
-import { tokens } from "./tokens.stylex.ts";
+import { tokens } from "./tokens.stylex";
 
 const styles = stylex.create({
 	headerContainer: {
-		display: "block",
 		width: "fit-content",
 		textAlign: "center",
 		margin: "0 auto",

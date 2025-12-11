@@ -11,13 +11,9 @@ export default defineConfig({
 		},
 	},
 	plugins: [
-		stylex.vite({
-			useCSSLayers: true,
-		}),
+		stylex.vite({ useCSSLayers: true }),
 		react({
-			babel: {
-				plugins: [["babel-plugin-react-compiler"]],
-			},
+			babel: { plugins: [["babel-plugin-react-compiler"]] },
 		}),
 	],
 });
