@@ -1,7 +1,7 @@
 import Bun from "bun";
 import { z } from "zod";
 
-const VERSION = "202512091948";
+const VERSION = "202512091948" as const;
 
 var protocolRegx = /^(https|http):\/\//;
 const bangSchema = z.array(
@@ -13,7 +13,7 @@ const bangSchema = z.array(
 					return v;
 				}
 				return !protocolRegx.test(v) ? "http://" + v : v;
-			}, z.url()),
+			}, z.url()), // domain
 			u: z.string().startsWith("/").or(z.url()), // search template
 			c: z
 				.literal([

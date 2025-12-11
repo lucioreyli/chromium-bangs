@@ -1,8 +1,7 @@
 import * as stylex from "@stylexjs/stylex";
-import { Button } from "./components/ui/button.tsx";
-import { GitHubIcon } from "./assets/icons/github-icon.tsx";
 import { SearchBangs } from "./components/search-bangs.tsx";
 import { tokens } from "./tokens.stylex";
+import { NavHeader } from "./components/nav-header.tsx";
 
 const styles = stylex.create({
 	headerContainer: {
@@ -26,19 +25,7 @@ const styles = stylex.create({
 export function App() {
 	return (
 		<main>
-			<nav>
-				<Button variant="link" asChild size="sm">
-					<a
-						href="https://github.com/lucioreyli/chromium-bangs"
-						target="_blank"
-						rel="noreferrer"
-					>
-						<GitHubIcon width="1.5rem" height="1rem" />
-						View on GitHub
-					</a>
-				</Button>
-				<Button size="sm">How To Add</Button>
-			</nav>
+			<NavHeader />
 			<header {...stylex.props(styles.headerContainer)}>
 				<h1 {...stylex.props(styles.title)}>Chromium Bangs</h1>
 				<span {...stylex.props(styles.desc)}>
